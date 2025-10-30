@@ -26,7 +26,7 @@ const Footer = () => {
             <img
               src="/logo-liderpack.png"
               alt="Lider Pack Embalagens e Festas"
-              className="h-16 w-auto mb-4 brightness-0 invert"
+              className="h-16 w-auto mb-4"
             />
             <p className="text-primary-foreground/90 text-sm leading-relaxed">
               Mais de 7 anos oferecendo embalagens, artigos para festas e
