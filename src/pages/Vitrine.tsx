@@ -12,7 +12,7 @@ const Vitrine = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-hidden flex flex-col">
+    <div className="h-screen overflow-hidden flex flex-col pt-20">
       {/* Header with fixed 80px height */}
       <Header />
       
