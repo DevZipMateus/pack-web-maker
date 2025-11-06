@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation, useNavigate } from "react-router-dom";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -21,24 +25,41 @@ const Header = () => {
     label: "Produtos",
     href: "#produtos"
   }, {
+    label: "Vitrine",
+    href: "/vitrine",
+    isRoute: true
+  }, {
     label: "Contato",
     href: "#contato"
   }];
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth"
-      });
+  const handleNavClick = (href: string, isRoute?: boolean) => {
+    if (isRoute) {
+      navigate(href);
+      setIsMobileMenuOpen(false);
+    } else {
+      if (!isHomePage) {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
       setIsMobileMenuOpen(false);
     }
   };
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-md" : "bg-background/80 backdrop-blur-sm"}`}>
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <a href="#hero" onClick={e => {
+          <a href="/" onClick={e => {
           e.preventDefault();
-          scrollToSection("#hero");
+          navigate("/");
         }} className="flex items-center gap-3">
             <img src="/logo-liderpack.png" alt="Lider Pack Embalagens e Festas" className="h-20 w-auto" />
           </a>
@@ -47,7 +68,7 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-8">
             {navItems.map(item => <a key={item.href} href={item.href} onClick={e => {
             e.preventDefault();
-            scrollToSection(item.href);
+            handleNavClick(item.href, item.isRoute);
           }} className="text-foreground hover:text-primary transition-colors duration-300 font-medium">
                 {item.label}
               </a>)}
@@ -67,7 +88,7 @@ const Header = () => {
             <div className="flex flex-col gap-4">
               {navItems.map(item => <a key={item.href} href={item.href} onClick={e => {
             e.preventDefault();
-            scrollToSection(item.href);
+            handleNavClick(item.href, item.isRoute);
           }} className="text-foreground hover:text-primary transition-colors duration-300 font-medium py-2">
                   {item.label}
                 </a>)}
