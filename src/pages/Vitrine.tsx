@@ -12,16 +12,16 @@ const Vitrine = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen overflow-hidden flex flex-col">
       {/* Header with fixed 80px height */}
       <Header />
       
-      {/* Main content - iframe starting below header */}
-      <main className="pt-[6rem] h-screen">
+      {/* Main content - iframe with calculated height */}
+      <main className="flex-1 w-full">
         <iframe 
           src="https://liderpackembalagens.egestor.com.br/vitrine/" 
-          className="w-full border-none"
-          style={{ height: 'calc(100vh - 6rem)' }}
+          className="w-full h-full border-none"
+          style={{ height: 'calc(100vh - 80px - 63px)' }}
           title="Demonstração de Vitrine"
         />
       </main>
