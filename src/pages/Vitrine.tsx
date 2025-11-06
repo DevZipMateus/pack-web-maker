@@ -21,7 +21,7 @@ const Vitrine = () => {
         <iframe 
           src="https://liderpackembalagens.egestor.com.br/vitrine/" 
           className="w-full h-full border-none"
-          style={{ height: 'calc(100vh - 80px - 63px)' }}
+          style={{ height: 'calc(100vh - 80px)' }}
           title="Demonstração de Vitrine"
         />
       </main>
