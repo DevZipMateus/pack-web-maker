@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Instagram } from "lucide-react";
+import { Phone, Instagram, ShoppingBag } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       id="hero"
@@ -53,6 +56,16 @@ const Hero = () => {
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
                 (38) 99848-8841
               </a>
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => navigate("/vitrine")}
+              className="border-2 border-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full sm:w-auto"
+            >
+              <ShoppingBag className="h-4 w-4 sm:h-5 sm:w-5" />
+              Ver Vitrine Online
             </Button>
 
             <Button
