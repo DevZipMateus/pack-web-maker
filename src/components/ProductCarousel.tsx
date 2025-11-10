@@ -59,15 +59,22 @@ const ProductCarousel = () => {
             {carouselImages.map((image, index) => (
               <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
-                  <Card className="border-2 hover:border-primary/50 transition-colors">
-                    <CardContent className="flex aspect-square items-center justify-center p-6">
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-full object-contain"
-                      />
-                    </CardContent>
-                  </Card>
+                  <a
+                    href="https://wa.me/5538998488841"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <Card className="border-2 hover:border-primary/50 transition-colors cursor-pointer">
+                      <CardContent className="flex aspect-square items-center justify-center p-6">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-contain"
+                        />
+                      </CardContent>
+                    </Card>
+                  </a>
                 </div>
               </CarouselItem>
             ))}
